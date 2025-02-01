@@ -2,7 +2,9 @@
   "name": "warehouse-management-app",
   "version": "1.0.0",
   "scripts": {
-    "start": "react-scripts start"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "vercel-build": "react-scripts build"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
