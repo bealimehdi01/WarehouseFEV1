@@ -20,7 +20,9 @@ import {
   DialogTitle,
   Container,
   Box,
-  Grid  // Add this import
+  Grid,  // Add this import
+  Snackbar,
+  Alert
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
@@ -70,9 +72,15 @@ const App = () => {
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [actionMenuAnchorEl, setActionMenuAnchorEl] = useState(null);
   const [viewMode, setViewMode] = useState('list'); // 'list' or 'grid'
+  const [showMessage, setShowMessage] = useState(true);
 
   useEffect(() => {
     fetchProducts();
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowMessage(false), 10000); // Hide after 10 seconds
+    return () => clearTimeout(timer);
   }, []);
 
   const fetchProducts = async () => {
@@ -188,6 +196,22 @@ const App = () => {
         background: 'linear-gradient(135deg, #89f7fe, #66a6ff)', 
         paddingBottom: 4 
       }}>
+      <Snackbar 
+        open={showMessage} 
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        sx={{ mt: 8 }}
+      >
+        <Alert 
+          severity="info" 
+          variant="filled"
+          sx={{ width: '100%', backgroundColor: '#1976d2' }}
+        >
+          <Typography variant="body1">
+            Note from Ali Sayyed: The app might respond a bit slowly as it's running on resource-optimized APIs. Thank you for your patience! 😊
+          </Typography>
+        </Alert>
+      </Snackbar>
+
       {/* Responsive Container for inner content */}
       <Container maxWidth="lg" sx={{ bgcolor: 'white', borderRadius: 2, boxShadow: 3, py: 2, mt: 4 }}>
         {/* Modern header with AppBar and active search suggestions */}
