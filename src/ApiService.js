@@ -1,4 +1,4 @@
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://warehouseapiv1-production.up.railway.app/api/Products';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://warehouseapiv1-production.up.railway.app:80/api/Products';
 // Endpoints:
 // GET all:    GET ${API_BASE_URL}
 // GET by ID:  GET ${API_BASE_URL}/{id}
